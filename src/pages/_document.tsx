@@ -8,6 +8,40 @@ export default class CustomDocument extends Document {
         <Head>
           <meta name="viewport" content="user-scalable=no" />
 
+          <title>Synqat</title>
+
+          <meta name="title" content="Synqat" />
+          <meta
+            name="description"
+            content="Hello. I'm a Front-end Engineer. I have a wide range of skills and hobbies, most of which involve making websites shine."
+          />
+          <meta
+            name="keywords"
+            content="engineer, frontend, synqat, synccat, syncat, syn-cat, synq, sync, cat, synqqat"
+          />
+          <meta name="robots" content="index, follow" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="language" content="English" />
+          <meta name="author" content="@Synqat" />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://synqat.dev/" />
+          <meta property="og:title" content="Synqat" />
+          <meta
+            property="og:description"
+            content="Hello. I'm a Front-end Engineer. I have a wide range of skills and hobbies, most of which involve making websites shine."
+          />
+          <meta property="og:image" content="/images/cat.jpg" />
+
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content="https://synqat.dev/" />
+          <meta property="twitter:title" content="Synqat" />
+          <meta
+            property="twitter:description"
+            content="Hello. I'm a Front-end Engineer. I have a wide range of skills and hobbies, most of which involve making websites shine."
+          />
+          <meta property="twitter:image" content="/images/cat.jpg" />
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
