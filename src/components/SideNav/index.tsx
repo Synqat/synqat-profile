@@ -48,7 +48,6 @@ export const SideNav = forwardRef<SideNavProps, typeof Center>(({ pageLength, ..
         mx: 'auto',
         insetX: 0,
         insetBlockEnd: 0,
-        backdropFilter: 'blur(80px)',
       }
     : {
         h: 'full',

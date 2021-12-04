@@ -1,36 +1,32 @@
-import { Box, Center, Container, HStack, Modal, ModalContent, Text, VStack } from '@chakra-ui/react'
-import { useState } from 'react'
-import { AnimateSharedLayout } from 'framer-motion'
+import { Box, Center, Container, HStack, Text, VStack } from '@chakra-ui/react'
 import { PageLayout } from '@/layouts/PageLayout'
-import { MotionBox, transitionConfig } from '@/components/MotionBox'
+import { Blob } from '@/components/Blob'
 
 const HomePage = () => {
-  const [step, setStep] = useState(0)
   return (
     <PageLayout hasFooter={false}>
       <Container as={VStack} spacing={0} flexGrow={1} align="stretch">
-        <Modal
-          isOpen
-          onClose={() => {
-            setStep((s) => s + 1)
-          }}
-          isCentered
-          useInert
-        >
-          <AnimateSharedLayout>
-            <MotionBox
-              as={ModalContent}
-              bg="background.secondary"
-              layout="position"
-              layoutId="modal-test"
-              transition={transitionConfig}
-            >
-              <MotionBox transition={transitionConfig} bg="ui.10" w="200px" h={`${step}00px`}>
-                {step}
-              </MotionBox>
-            </MotionBox>
-          </AnimateSharedLayout>
-        </Modal>
+        <Box position="relative" w="100vw" h="100vh">
+          {[...new Array(10)].map((_, i) => {
+            const boxSize = `${Math.floor(Math.random() * 10)}00px`
+            const randX = `${Math.floor(Math.random() * 10)}0vw`
+            const randY = `${Math.floor(Math.random() * 10)}0vh`
+
+            return (
+              <Blob
+                key={i}
+                zIndex={-1}
+                position="absolute"
+                opacity={Math.floor(Math.random() * 10) / 10}
+                color="background.secondary"
+                version={i as any}
+                left={`calc(${randX} - ${boxSize})`}
+                top={`calc(${randY} - ${boxSize})`}
+                boxSize={boxSize}
+              />
+            )
+          })}
+        </Box>
         <HStack h="banner.height" flexShrink={0}>
           <VStack align="start" w="full" color="text.40" fontSize="18px" spacing={2}>
             <Text color="text.60">Hello!</Text>

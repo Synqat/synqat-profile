@@ -11,7 +11,7 @@ import {
   IconButton,
   Text,
   useBoolean,
-  VStack,
+  VStack, Wrap,
 } from '@chakra-ui/react'
 import { AnimateSharedLayout } from 'framer-motion'
 import { FaBars, FaTimes } from 'react-icons/fa'
@@ -20,6 +20,7 @@ import { useCustomSound } from '@/hooks/useCustomSound'
 import { MotionBox, MotionStack, transitionFastConfig } from '@/components/MotionBox'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import { useAppState } from '@/hooks/useAppState'
+import {Blob} from "@/components/Blob";
 
 const HeaderButtonLink = forwardRef<{ href: string }, typeof Button>(({ href, ...props }, ref) => {
   const isMobile = useIsMobile()
@@ -150,7 +151,7 @@ const Header = () => {
 
   return (
     <Box w="full" minH="header.height" pos="relative">
-      <VStack zIndex={1} h="header.height" align="start" w="full" spacing={0} backdropFilter="blur(20px)" pos="fixed">
+      <VStack zIndex={1} h="header.height" align="start" w="full" spacing={0} pos="fixed">
         <Center w="full" h="full">
           <Container h="full" as={HStack} align="stretch" justify="space-between">
             <HStack spacing={4} py={4} cursor="default">
