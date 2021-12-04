@@ -1,3 +1,4 @@
+import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { opacityForHex } from '@/utils/hexOpacity'
 
 import themeData from '@/themes/dark.theme.json'
@@ -17,15 +18,16 @@ const rootStyles = {
   h: 'full',
   minW: 'full',
   minH: 'full',
-  fontFamily: 'Nunito',
+  lineHeight: 1.25,
+  fontFamily: 'Sniglet',
   '-webkit-tap-highlight-color': 'transparent',
 }
 
-export const theme = {
+export const theme: DeepPartial<ChakraTheme> = {
   components: {
     Container: {
       baseStyle: {
-        px: 2,
+        p: 0,
         w: 'full',
         maxW: 'container',
       },
@@ -44,7 +46,7 @@ export const theme = {
     },
   },
   shadows: {
-    outline: '0 0 0 2px white',
+    outline: '0 0 0 2px var(--synqat-colors-brand-secondary-100)',
   },
   radii: themeData.radius,
   sizes: {

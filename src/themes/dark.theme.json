@@ -33,13 +33,16 @@
     "22": "88px",
     "23": "92px",
     "24": "96px",
-    "container": "724px",
+    "container": "970px",
     "main-profile-size": "224px",
     "card": {
       "width": "220px"
     },
     "header": {
-      "height": "76px"
+      "height": "90px"
+    },
+    "banner": {
+      "height": "345px"
     }
   },
   "colors": {
@@ -47,9 +50,7 @@
     "text": "#faf2eb",
     "flow": "#171615",
     "contrast": "#faf2eb",
-    "accent": {
-      "1": "#ffe0c2"
-    },
+    "accent": {},
     "border": {
       "light": "#faf2eb26",
       "hard": "#faf2eb"
@@ -63,12 +64,12 @@
       "critical": "#ff3838"
     },
     "brand": {
-      "primary": "#b62535",
-      "secondary": "#5f0b0b"
+      "primary": "#78dff2",
+      "secondary": "#f981cc"
     },
     "background": {
-      "primary": "#1c1b1a",
-      "secondary": "#3b3937"
+      "primary": "#383147",
+      "secondary": "#2d2739"
     }
   }
 }

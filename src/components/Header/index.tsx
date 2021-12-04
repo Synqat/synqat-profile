@@ -38,20 +38,22 @@ const HeaderButtonLink = forwardRef<{ href: string }, typeof Button>(({ href, ..
       _hover={{
         textDecoration: 'none',
       }}
+      py={2}
+      px={0}
+      rounded="sm"
     >
       <Button
         onPointerEnter={setHovering.on}
         onPointerLeave={setHovering.off}
         as={Box}
-        h="full"
         w={isMobile ? 'full' : 'auto'}
+        py={2}
         px={6}
-        py={isMobile ? 10 : 0}
         bg="transparent"
         _hover={{
-          color: 'accent.1',
+          color: 'white',
         }}
-        rounded={0}
+        rounded="sm"
         fontSize={[28, null, 18]}
         onFocus={onClick}
         onMouseEnter={onMouseEnter}
@@ -61,17 +63,34 @@ const HeaderButtonLink = forwardRef<{ href: string }, typeof Button>(({ href, ..
       >
         {isHovering && (
           <MotionBox
+            rounded="sm"
             exit={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={transitionFastConfig}
-            bg="ui.5"
+            bg="flow.20"
             boxSize="full"
             position="absolute"
             pointerEvents="none"
             layoutId="header-button-hover"
           />
         )}
-        <Text>{props.children}</Text>
+        <Text
+          zIndex={2}
+          fontWeight="light"
+          sx={{
+            '-webkit-background-clip': 'text',
+            '-webkit-text-fill-color': 'transparent',
+          }}
+          {...(isHovering
+            ? {
+                bgGradient: 'linear(to-r, brand.primary.100, brand.secondary.100)',
+              }
+            : {
+                bgGradient: 'linear(to-r, white, white)',
+              })}
+        >
+          {props.children}
+        </Text>
       </Button>
     </Link>
   )
@@ -102,7 +121,6 @@ export const NavLinks = () => {
         <MotionStack
           w="full"
           justify="end"
-          h={isMobile ? 'auto' : 'full'}
           direction={isMobile ? 'column' : 'row'}
           spacing={0}
           px={isMobile ? 4 : 0}
@@ -112,13 +130,13 @@ export const NavLinks = () => {
           animate={mobileNav.isOpen || !isMobile ? 'show' : 'hidden'}
         >
           <MotionBox key={0} variants={listItem} transition={transitionFastConfig}>
-            <HeaderButtonLink href="https://github.com/Synqat">GitHub</HeaderButtonLink>
+            <HeaderButtonLink href="https://github.com/Synqat">github</HeaderButtonLink>
           </MotionBox>
           <MotionBox key={1} variants={listItem} transition={transitionFastConfig}>
-            <HeaderButtonLink href="https://twitter.com/Synqat">Twitter</HeaderButtonLink>
+            <HeaderButtonLink href="https://twitter.com/Synqat">twitter</HeaderButtonLink>
           </MotionBox>
           <MotionBox key={2} variants={listItem} transition={transitionFastConfig}>
-            <HeaderButtonLink href="https://codepen.io/Synqat">CodePen</HeaderButtonLink>
+            <HeaderButtonLink href="https://codepen.io/Synqat">codepen</HeaderButtonLink>
           </MotionBox>
         </MotionStack>
       </Center>
@@ -134,10 +152,19 @@ const Header = () => {
     <Box w="full" minH="header.height" pos="relative">
       <VStack zIndex={1} h="header.height" align="start" w="full" spacing={0} backdropFilter="blur(20px)" pos="fixed">
         <Center w="full" h="full">
-          <Container px={isMobile ? 4 : 0} h="full" as={HStack} align="stretch" justify="space-between">
+          <Container h="full" as={HStack} align="stretch" justify="space-between">
             <HStack spacing={4} py={4} cursor="default">
-              <Avatar bg="none" boxSize={10} src="/images/invert-pfp-plain.png" />
-              <Heading color="text.100" noOfLines={1} fontFamily="Berkshire Swash">
+              <Heading
+                py={2}
+                color="text.100"
+                fontSize="48px"
+                fontFamily="Oldenburg"
+                bgGradient="linear(to-r, brand.primary.100, brand.secondary.100)"
+                sx={{
+                  '-webkit-background-clip': 'text',
+                  '-webkit-text-fill-color': 'transparent',
+                }}
+              >
                 Synqat
               </Heading>
             </HStack>
