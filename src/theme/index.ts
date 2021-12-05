@@ -15,9 +15,7 @@ const brandSecondary = opacityForHex(themeData.colors.brand.secondary)
 const rootStyles = {
   color: themeData.colors.text,
   w: 'full',
-  h: 'full',
   minW: 'full',
-  minH: 'full',
   lineHeight: 1.25,
   fontFamily: 'Sniglet',
   '-webkit-tap-highlight-color': 'transparent',

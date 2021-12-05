@@ -24,7 +24,7 @@ export const PageLayout = ({
   hasFooter = true,
   hasHeader = true,
 }: PageLayoutProps) => (
-  <Box boxSize="full" >
+  <Box boxSize="full">
     <VStack boxSize="full" spacing={0} align="center" justify="space-between" position="relative">
       {banner}
       {hasHeader && header}

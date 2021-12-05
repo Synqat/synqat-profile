@@ -43,13 +43,16 @@
     },
     "banner": {
       "height": "345px"
+    },
+    "aside": {
+      "width": "280px"
     }
   },
   "colors": {
-    "ui": "#faf2eb",
-    "text": "#faf2eb",
-    "flow": "#171615",
-    "contrast": "#faf2eb",
+    "ui": "#ffffff",
+    "text": "#ffffff",
+    "flow": "#000000",
+    "contrast": "#ffffff",
     "accent": {},
     "border": {
       "light": "#faf2eb26",

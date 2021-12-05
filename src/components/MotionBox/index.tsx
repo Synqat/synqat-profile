@@ -1,5 +1,5 @@
 import { motion, MotionProps } from 'framer-motion'
-import { Box, BoxProps, Stack, StackProps } from '@chakra-ui/react'
+import { Box, BoxProps, Flex, FlexProps, Stack, StackProps } from '@chakra-ui/react'
 
 export const DEFAULT_DURATION = 0.85
 export const DEFAULT_EASING = [0.27, 0.91, 0.72, 1]
@@ -16,4 +16,5 @@ export const transitionFastConfig: MotionProps['transition'] = {
 
 // This sucks
 export const MotionBox = motion<Omit<BoxProps, keyof MotionProps> & MotionProps>(Box as any)
+export const MotionFlex = motion<Omit<FlexProps, keyof MotionProps> & MotionProps>(Flex as any)
 export const MotionStack = motion<Omit<StackProps, keyof MotionProps> & MotionProps>(Stack as any)

@@ -1,9 +1,9 @@
 import {
-  Avatar,
   Box,
   Button,
   Center,
   Container,
+  Flex,
   forwardRef,
   Heading,
   HStack,
@@ -11,139 +11,89 @@ import {
   IconButton,
   Text,
   useBoolean,
-  VStack, Wrap,
+  VStack,
 } from '@chakra-ui/react'
 import { AnimateSharedLayout } from 'framer-motion'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import { Link } from '@/components/Link'
 import { useCustomSound } from '@/hooks/useCustomSound'
-import { MotionBox, MotionStack, transitionFastConfig } from '@/components/MotionBox'
+import { MotionBox, transitionFastConfig } from '@/components/MotionBox'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import { useAppState } from '@/hooks/useAppState'
-import {Blob} from "@/components/Blob";
 
-const HeaderButtonLink = forwardRef<{ href: string }, typeof Button>(({ href, ...props }, ref) => {
-  const isMobile = useIsMobile()
-  const [isHovering, setHovering] = useBoolean(false)
+const HeaderButtonLink = forwardRef<{ href: string; index: number }, typeof Button>(
+  ({ href, index, ...props }, ref) => {
+    const isMobile = useIsMobile()
+    const [isHovering, setHovering] = useBoolean(false)
 
-  const onClick = useCustomSound('menu-beep-deeper')
-  const onMouseEnter = useCustomSound('menu-beep-default')
+    const onClick = useCustomSound('menu-beep-deeper')
+    const onMouseEnter = useCustomSound('menu-beep-default')
 
-  return (
-    <Link
-      h="full"
-      w={isMobile ? 'full' : 'auto'}
-      href={href}
-      rel="external"
-      target="_blank"
-      _hover={{
-        textDecoration: 'none',
-      }}
-      py={2}
-      px={0}
-      rounded="sm"
-    >
+    return (
       <Button
+        px={6}
+        as={Link}
+        href={href}
+        rel="external"
+        target="_blank"
+        bg="transparent"
+        rounded="sm"
+        color="text.60"
+        onFocus={onClick}
+        position="relative"
+        _hover={{
+          color: 'text.100',
+          textDecoration: 'none',
+        }}
+        fontSize={[28, null, 18]}
+        onMouseEnter={onMouseEnter}
+        w={isMobile ? 'full' : 'auto'}
         onPointerEnter={setHovering.on}
         onPointerLeave={setHovering.off}
-        as={Box}
-        w={isMobile ? 'full' : 'auto'}
-        py={2}
-        px={6}
-        bg="transparent"
-        _hover={{
-          color: 'white',
-        }}
-        rounded="sm"
-        fontSize={[28, null, 18]}
-        onFocus={onClick}
-        onMouseEnter={onMouseEnter}
         {...props}
         ref={ref}
-        position="relative"
       >
         {isHovering && (
           <MotionBox
+            inset={0}
             rounded="sm"
-            exit={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={transitionFastConfig}
-            bg="flow.20"
             boxSize="full"
+            overflow="hidden"
             position="absolute"
             pointerEvents="none"
+            bg="background.secondary"
             layoutId="header-button-hover"
+            transition={transitionFastConfig}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
           />
         )}
-        <Text
-          zIndex={2}
-          fontWeight="light"
-          sx={{
-            '-webkit-background-clip': 'text',
-            '-webkit-text-fill-color': 'transparent',
-          }}
-          {...(isHovering
-            ? {
-                bgGradient: 'linear(to-r, brand.primary.100, brand.secondary.100)',
-              }
-            : {
-                bgGradient: 'linear(to-r, white, white)',
-              })}
-        >
+        <Text zIndex={2} fontWeight="light">
           {props.children}
         </Text>
       </Button>
-    </Link>
-  )
-})
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    },
+    )
   },
-}
+)
 
-const listItem = {
-  hidden: { opacity: 0, y: 10, scale: 1.1 },
-  show: { opacity: 1, y: 0, scale: 1 },
-}
-
-export const NavLinks = () => {
-  const isMobile = useIsMobile()
-  const { mobileNav } = useAppState()
-
-  return (
-    <AnimateSharedLayout type="crossfade">
-      <Center boxSize="full">
-        <MotionStack
-          w="full"
-          justify="end"
-          direction={isMobile ? 'column' : 'row'}
-          spacing={0}
-          px={isMobile ? 4 : 0}
-          variants={container}
-          initial="hidden"
-          transition={transitionFastConfig}
-          animate={mobileNav.isOpen || !isMobile ? 'show' : 'hidden'}
-        >
-          <MotionBox key={0} variants={listItem} transition={transitionFastConfig}>
-            <HeaderButtonLink href="https://github.com/Synqat">github</HeaderButtonLink>
-          </MotionBox>
-          <MotionBox key={1} variants={listItem} transition={transitionFastConfig}>
-            <HeaderButtonLink href="https://twitter.com/Synqat">twitter</HeaderButtonLink>
-          </MotionBox>
-          <MotionBox key={2} variants={listItem} transition={transitionFastConfig}>
-            <HeaderButtonLink href="https://codepen.io/Synqat">codepen</HeaderButtonLink>
-          </MotionBox>
-        </MotionStack>
-      </Center>
-    </AnimateSharedLayout>
-  )
-}
+export const NavLinks = () => (
+  <AnimateSharedLayout type="crossfade">
+    <Flex w="full" justify="end">
+      <HStack mr={-4} p={4} spacing={0} rounded="md" h="full" backdropFilter="blur(20px)">
+        <HeaderButtonLink index={0} href="https://github.com/Synqat">
+          github
+        </HeaderButtonLink>
+        <HeaderButtonLink index={1} href="https://twitter.com/Synqat">
+          twitter
+        </HeaderButtonLink>
+        <HeaderButtonLink index={2} href="https://codepen.io/Synqat">
+          codepen
+        </HeaderButtonLink>
+      </HStack>
+    </Flex>
+  </AnimateSharedLayout>
+)
 
 const Header = () => {
   const isMobile = useIsMobile()
