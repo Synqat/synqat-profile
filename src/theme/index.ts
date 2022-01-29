@@ -1,4 +1,3 @@
-import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { opacityForHex } from '@/utils/hexOpacity'
 
 import themeData from '@/themes/dark.theme.json'
@@ -16,12 +15,34 @@ const rootStyles = {
   color: themeData.colors.text,
   w: 'full',
   minW: 'full',
+  h: 'full',
+  minH: 'full',
   lineHeight: 1.25,
   fontFamily: 'Sniglet',
-  '-webkit-tap-highlight-color': 'transparent',
+  scrollBehavior: 'smooth',
+  textRendering: 'optimizeLegibility',
+  WebkitTapHighlightColor: 'transparent',
+
+  '::-webkit-scrollbar': {
+    w: 1,
+    h: 1,
+  },
+
+  '::-webkit-scrollbar-track': {
+    background: 'transparent',
+  },
+
+  '::-webkit-scrollbar-thumb': {
+    cursor: 'pointer',
+    bg: 'background.secondary',
+    rounded: 'full',
+    ':hover': {
+      bg: 'ui.80',
+    },
+  },
 }
 
-export const theme: DeepPartial<ChakraTheme> = {
+export const theme = {
   components: {
     Container: {
       baseStyle: {
@@ -38,9 +59,10 @@ export const theme: DeepPartial<ChakraTheme> = {
   },
   styles: {
     global: {
-      body: { ...rootStyles, bg: 'transparent' },
-      html: { ...rootStyles, bg: themeData.colors.background.primary },
+      body: { ...rootStyles, bg: 'transparent', width: '100vw' },
+      html: { ...rootStyles, bg: themeData.colors.background.primary, overflowY: 'overlay' },
       '#__next': rootStyles,
+      ':focus:not(:focus-visible):not([role="dialog"]):not([role="menu"])': { boxShadow: 'none' },
     },
   },
   shadows: {
@@ -66,6 +88,7 @@ export const theme: DeepPartial<ChakraTheme> = {
         60: brandPrimary(0.6),
         40: brandPrimary(0.4),
         20: brandPrimary(0.2),
+        0: brandPrimary(0),
       },
       secondary: {
         100: brandSecondary(1),
@@ -73,6 +96,7 @@ export const theme: DeepPartial<ChakraTheme> = {
         60: brandSecondary(0.6),
         40: brandSecondary(0.4),
         20: brandSecondary(0.2),
+        0: brandSecondary(0),
       },
     },
     contrast: {
@@ -120,4 +144,4 @@ export const theme: DeepPartial<ChakraTheme> = {
       '025': ui(0.025),
     },
   },
-}
+} as const

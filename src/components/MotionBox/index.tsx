@@ -9,6 +9,11 @@ export const transitionConfig: MotionProps['transition'] = {
   duration: DEFAULT_DURATION,
 }
 
+export const transitionMediumConfig: MotionProps['transition'] = {
+  ...transitionConfig,
+  duration: 0.4,
+}
+
 export const transitionFastConfig: MotionProps['transition'] = {
   ...transitionConfig,
   duration: 0.2,

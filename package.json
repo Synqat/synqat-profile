@@ -23,8 +23,10 @@
     "@chakra-ui/theme-tools": "^1.2.2",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+    "csshake": "^1.5.3",
     "dotenv": "^10.0.0",
     "framer-motion": "^4.1.17",
+    "jotai": "^1.5.0",
     "lodash": "^4.17.21",
     "next": "^11.1.2",
     "react": "^17.0.2",
@@ -33,6 +35,7 @@
     "react-icons": "^4.3.1",
     "react-in-viewport": "^1.0.0-alpha.20",
     "react-swipeable": "^6.2.0",
+    "react-tsparticles": "^1.37.5",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {

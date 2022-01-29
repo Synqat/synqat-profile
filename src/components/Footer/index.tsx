@@ -1,4 +1,5 @@
 import { Center, Container } from '@chakra-ui/react'
+import { memo } from 'react'
 
 const Footer = () => (
   <Center bg="background.secondary" w="full">
@@ -6,4 +7,4 @@ const Footer = () => (
   </Center>
 )
 
-export default Footer
+export default memo(Footer)
