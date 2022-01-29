@@ -1,4 +1,4 @@
-import { Box, Center, HStack, Text, useBoolean, VStack, Wrap } from '@chakra-ui/react'
+import { Box, Center, Text, useBoolean, VStack } from '@chakra-ui/react'
 import { memo } from 'react'
 import Particles from 'react-tsparticles'
 import { MotionBox, transitionFastConfig } from '@/components/MotionBox'
@@ -22,7 +22,6 @@ const Letter = ({ letter, color, onClick }: { letter: string; color: string; onC
     }}
   >
     <MotionBox
-      as={Text}
       inset={0}
       zIndex={1}
       boxSize="full"
@@ -38,7 +37,7 @@ const Letter = ({ letter, color, onClick }: { letter: string; color: string; onC
       className={letter === 'q' ? 'shake-hard' : 'shake'}
       {...(letter === 'q'
         ? { as: Link, href: 'https://github.com/Synqat', onClick, cursor: 'pointer' }
-        : { cursor: 'default' })}
+        : { as: Text, cursor: 'default' })}
     >
       {letter}
     </MotionBox>

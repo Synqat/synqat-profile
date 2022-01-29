@@ -1,5 +1,6 @@
-import { Box, Container, Heading, Link, Text, VStack } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react'
 import { PageLayout } from '@/layouts/PageLayout'
+import { Link } from '@/components/Link'
 
 const DATE_NOW = new Date()
 const DATE_DOB = new Date('1998-11-27')
