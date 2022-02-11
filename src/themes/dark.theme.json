@@ -72,7 +72,12 @@
     },
     "background": {
       "primary": "#383147",
-      "secondary": "#2d2739"
+      "secondary": "#2d2739",
+      "dark": {
+        "default": "#0f0e12",
+        "blue": "#11111a",
+        "red": "#140d10"
+      }
     }
   }
 }

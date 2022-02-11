@@ -1,4 +1,4 @@
-import { Box, Center, chakra, forwardRef, Stack, StackProps } from '@chakra-ui/react'
+import { Box, Center, chakra, forwardRef, Stack, StackProps, useToken } from '@chakra-ui/react'
 import { AnimateSharedLayout } from 'framer-motion'
 import { useEffect } from 'react'
 import { MotionBox } from '@/components/MotionBox'

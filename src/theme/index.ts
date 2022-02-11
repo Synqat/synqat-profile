@@ -59,6 +59,10 @@ export const theme = {
   },
   styles: {
     global: {
+      _selection: {
+        color: 'brand.secondary.100',
+        bg: 'background.primary',
+      },
       body: { ...rootStyles, bg: 'transparent', width: '100vw' },
       html: { ...rootStyles, bg: themeData.colors.background.primary, overflowY: 'overlay' },
       '#__next': rootStyles,
